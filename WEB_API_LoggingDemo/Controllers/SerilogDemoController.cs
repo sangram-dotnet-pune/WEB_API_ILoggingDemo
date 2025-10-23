@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 
 namespace WEB_API_LoggingDemo.Controllers
 {
@@ -35,5 +36,19 @@ namespace WEB_API_LoggingDemo.Controllers
 
             return Ok("Logging test successful!");
         }
+
+        [HttpGet("Test-logging-from-appsettings")]
+        public IActionResult TestLogging()
+        {
+            Log.Verbose("Verbose log example");
+            Log.Debug("Debug log example");
+            Log.Information("Information log example");
+            Log.Warning("Warning log example");
+            Log.Error("Error log example");
+            Log.Fatal("Fatal log example");
+
+            return Ok("Serilog logging test completed! Check console and Logs folder.");
+        }
+
     }
 }
